@@ -69,14 +69,12 @@
       <span class="text-sm font-semibold tracking-tight text-black"> RAA Thawalib </span>
     </div>
   </Sidebar.Header>
-
   <Sidebar.Content class="bg-purple-100">
     {#each sidebarContents as content}
       <Sidebar.Group>
         <Sidebar.GroupLabel>
           {content.groupLabel}
         </Sidebar.GroupLabel>
-
         <Sidebar.GroupContent>
           <Sidebar.Menu>
             {#each content.items as item}
@@ -92,6 +90,5 @@
       </Sidebar.Group>
     {/each}
   </Sidebar.Content>
-
   <Sidebar.Footer class="bg-purple-100" />
 </Sidebar.Root>

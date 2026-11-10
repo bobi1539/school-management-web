@@ -1,6 +1,6 @@
 <script lang="ts">
   import favicon from "#lib/assets/favicon.svg";
-  import AppSidebar from "#lib/components/app-sidebar.svelte";
+  import AppSidebar from "#lib/components/app/sidebar/app-sidebar.svelte";
   import * as Sidebar from "#lib/components/ui/sidebar/index.ts";
   import type { LayoutProps } from "./$types";
   import "./layout.css";

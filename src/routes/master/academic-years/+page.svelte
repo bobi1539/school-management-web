@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "#lib/components/ui/button/button.svelte";
+  import * as Dialog from "#lib/components/ui/dialog/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
   import { Plus } from "@lucide/svelte";
 
@@ -13,13 +14,23 @@
   ];
 </script>
 
-<div class="p-5 bg-white border rounded-3xl">
+<div class="p-5 bg-white border border-gray-300 rounded-3xl">
   <div class="flex justify-between items-center mb-1">
     <h1 class="text-xl font-bold text-gray-800 ms-1.5">Tahun Ajaran</h1>
-    <Button class="px-5.5 py-5.5 bg-purple-100 text-purple-600 rounded-full border-0 hover:bg-purple-100 hover:cursor-pointer hover:shadow-lg transition-all">
-      <Plus />
-      <span>Tambah</span>
-    </Button>
+    <Dialog.Root>
+      <Dialog.Trigger>
+        <Button class="px-5.5 py-5.5 bg-purple-100 text-purple-600 rounded-full border-0 hover:bg-purple-100 hover:cursor-pointer hover:shadow-lg transition-all">
+          <Plus />
+          <span>Tambah</span>
+        </Button>
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <Dialog.Header>
+          <Dialog.Title>Are you absolutely sure?</Dialog.Title>
+          <Dialog.Description>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</Dialog.Description>
+        </Dialog.Header>
+      </Dialog.Content>
+    </Dialog.Root>
   </div>
   <Table.Root>
     <Table.Header>

@@ -53,7 +53,7 @@
   ];
 </script>
 
-<Sidebar.Root variant="sidebar" class="bg-white px-2">
+<Sidebar.Root variant="sidebar" class="bg-white px-2 border border-gray-300">
   <Sidebar.Header class="h-16 flex justify-center items-center bg-white">
     <h1 class="text-lg font-bold text-gray-800">RAA Thawalib</h1>
   </Sidebar.Header>

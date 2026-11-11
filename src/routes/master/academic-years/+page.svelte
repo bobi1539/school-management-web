@@ -1,7 +1,10 @@
 <script lang="ts">
   import AppAddButton from "#lib/components/app/button/app-add-button.svelte";
+  import AppInputDatePicker from "#lib/components/app/input/app-input-date-picker.svelte";
+  import AppInputLabel from "#lib/components/app/input/app-input-label.svelte";
   import Badge from "#lib/components/ui/badge/badge.svelte";
   import * as Dialog from "#lib/components/ui/dialog/index.ts";
+  import * as Field from "#lib/components/ui/field/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
 
   const academicYears = [
@@ -47,9 +50,13 @@
       </Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>Are you absolutely sure?</Dialog.Title>
-          <Dialog.Description>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</Dialog.Description>
+          <Dialog.Title>Tambah Tahun Ajaran</Dialog.Title>
         </Dialog.Header>
+        <Field.Group>
+          <AppInputLabel label="Nama" name="name" />
+          <AppInputDatePicker label="Tanggal Mulai" name="startDate" />
+          <AppInputDatePicker label="Tanggal Berakhir" name="endDate" />
+        </Field.Group>
       </Dialog.Content>
     </Dialog.Root>
   </div>

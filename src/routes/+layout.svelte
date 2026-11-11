@@ -14,7 +14,12 @@
 
 <Sidebar.Provider>
   <AppSidebar />
-  <main class="w-full bg-purple-100">
-    {@render children?.()}
+  <main class="w-full bg-white">
+    <div class="h-16 border-b sticky top-0 z-50 bg-white flex items-center px-5">
+      <Sidebar.Trigger class="p-5 rounded-full hover:cursor-pointer hover:rounded-full hover:bg-gray-100" />
+    </div>
+    <div class="px-5 pt-5 pb-20">
+      {@render children?.()}
+    </div>
   </main>
 </Sidebar.Provider>

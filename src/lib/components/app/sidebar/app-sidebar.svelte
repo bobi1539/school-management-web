@@ -63,13 +63,13 @@
   ];
 </script>
 
-<Sidebar.Root variant="sidebar" class="bg-purple-100 border-none">
-  <Sidebar.Header class="px-3 py-4 bg-purple-100">
+<Sidebar.Root variant="sidebar" class="bg-white px-2">
+  <Sidebar.Header class="px-3 py-4 bg-white">
     <div class="flex items-center justify-center gap-3 px-2">
-      <span class="text-sm font-semibold tracking-tight text-black"> RAA Thawalib </span>
+      <span class="text-sm font-semibold tracking-tight text-black">RAA Thawalib</span>
     </div>
   </Sidebar.Header>
-  <Sidebar.Content class="bg-purple-100">
+  <Sidebar.Content class="bg-white">
     {#each sidebarContents as content}
       <Sidebar.Group>
         <Sidebar.GroupLabel>
@@ -79,7 +79,7 @@
           <Sidebar.Menu>
             {#each content.items as item}
               <Sidebar.MenuItem>
-                <Sidebar.MenuButton onclick={() => goto(item.url)} isActive={page.url.pathname === item.url} class="py-4.5 border border-purple-100 transition-colors hover:bg-white hover:text-black hover:border hover:border-purple-200 hover:cursor-pointer data-[active=true]:bg-white data-[active=true]:text-black data-[active=true]:border data-[active=true]:border-purple-200">
+                <Sidebar.MenuButton onclick={() => goto(item.url)} isActive={page.url.pathname === item.url} class="px-5.5 py-5.5 transition-colors text-gray-600 rounded-full hover:bg-gray-100 hover:text-gray-600 hover:cursor-pointer hover:rounded-full data-[active=true]:bg-purple-100 data-[active=true]:text-purple-600 data-[active=true]:rounded-full">
                   <item.icon />
                   <span>{item.label}</span>
                 </Sidebar.MenuButton>
@@ -90,5 +90,5 @@
       </Sidebar.Group>
     {/each}
   </Sidebar.Content>
-  <Sidebar.Footer class="bg-purple-100" />
+  <Sidebar.Footer class="bg-white" />
 </Sidebar.Root>

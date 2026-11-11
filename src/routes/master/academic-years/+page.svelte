@@ -3,9 +3,11 @@
   import AppInputDatePicker from "#lib/components/app/input/app-input-date-picker.svelte";
   import AppInputLabel from "#lib/components/app/input/app-input-label.svelte";
   import Badge from "#lib/components/ui/badge/badge.svelte";
+  import Button from "#lib/components/ui/button/button.svelte";
   import * as Dialog from "#lib/components/ui/dialog/index.ts";
   import * as Field from "#lib/components/ui/field/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
+  import { Save, X } from "@lucide/svelte";
 
   const academicYears = [
     {
@@ -41,22 +43,38 @@
   ];
 </script>
 
-<div class="p-5 bg-white border border-gray-300 rounded-3xl">
+<div class="p-5 bg-white border border-gray-300 rounded-none">
   <div class="flex justify-between items-center mb-1">
     <h1 class="text-xl font-bold text-gray-800 ms-1.5">Tahun Ajaran</h1>
     <Dialog.Root>
       <Dialog.Trigger>
         <AppAddButton />
       </Dialog.Trigger>
-      <Dialog.Content>
+
+      <Dialog.Content class="p-8 -mt-32 rounded-none">
         <Dialog.Header>
-          <Dialog.Title>Tambah Tahun Ajaran</Dialog.Title>
+          <Dialog.Title class="text-lg font-semibold">Tambah Tahun Ajaran</Dialog.Title>
+          <Dialog.Description class="text-sm text-muted-foreground">Lengkapi informasi tahun ajaran yang ingin ditambahkan.</Dialog.Description>
         </Dialog.Header>
         <Field.Group>
-          <AppInputLabel label="Nama" name="name" />
+          <AppInputLabel label="Nama Tahun Ajaran" name="name" />
           <AppInputDatePicker label="Tanggal Mulai" name="startDate" />
           <AppInputDatePicker label="Tanggal Berakhir" name="endDate" />
         </Field.Group>
+        <Dialog.Footer>
+          <div class="w-full flex justify-between">
+            <Dialog.Close>
+              <Button class="px-5.5 h-11 bg-white text-gray-600 rounded-none border border-gray-300 hover:bg-gray-100 hover:cursor-pointer transition-all">
+                <X />
+                <span>Batal</span>
+              </Button>
+            </Dialog.Close>
+            <Button class="px-5.5 h-11 bg-app-100 text-app-600 rounded-none border-0 hover:bg-app-100 hover:cursor-pointer hover:shadow-lg transition-all">
+              <Save />
+              <span>Simpan</span>
+            </Button>
+          </div>
+        </Dialog.Footer>
       </Dialog.Content>
     </Dialog.Root>
   </div>
@@ -73,13 +91,13 @@
     <Table.Body class="text-gray-600">
       {#each academicYears as academicYear (academicYear)}
         <Table.Row class="border-none hover:bg-gray-100">
-          <Table.Cell class="py-3.5 first:rounded-l-md">{academicYear.name}</Table.Cell>
+          <Table.Cell class="py-3.5">{academicYear.name}</Table.Cell>
           <Table.Cell class="py-3.5">{academicYear.starDate}</Table.Cell>
           <Table.Cell class="py-3.5">{academicYear.endDate}</Table.Cell>
           <Table.Cell class="py-3.5">
-            <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor}">{academicYear.status.label}</Badge>
+            <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor} rounded-none">{academicYear.status.label}</Badge>
           </Table.Cell>
-          <Table.Cell class="py-3.5 last:rounded-r-md text-end"></Table.Cell>
+          <Table.Cell class="py-3.5"></Table.Cell>
         </Table.Row>
       {/each}
     </Table.Body>

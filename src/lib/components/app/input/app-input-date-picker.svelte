@@ -20,17 +20,17 @@
 </script>
 
 <Field.Field>
-  <Field.Label>{props.label}</Field.Label>
+  <Field.Label for={props.name}>{props.label}</Field.Label>
   <Popover.Root>
     <Popover.Trigger id={props.name}>
       {#snippet child({ props: triggerProps })}
-        <Button {...triggerProps} class="py-5 justify-between font-normal bg-white text-gray-600 border rounded-lg border-gray-300 hover:cursor-pointer hover:bg-white data-[state=open]:border-app-600 data-[state=open]:ring-1 data-[state=open]:ring-app-600">
+        <Button {...triggerProps} class="py-5 justify-between font-normal bg-white text-gray-600 border rounded-none border-gray-300 hover:cursor-pointer hover:bg-white data-[state=open]:border-app-600 data-[state=open]:ring-1 data-[state=open]:ring-app-600">
           <span>{value ? df.format(value.toDate(getLocalTimeZone())) : ""}</span>
           <CalendarDays />
         </Button>
       {/snippet}
     </Popover.Trigger>
-    <Popover.Content class="w-auto p-0" align="start">
+    <Popover.Content class="w-auto p-0 rounded-none" align="start">
       <Calendar type="single" bind:value />
     </Popover.Content>
   </Popover.Root>

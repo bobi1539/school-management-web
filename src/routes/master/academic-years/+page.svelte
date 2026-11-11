@@ -1,9 +1,8 @@
 <script lang="ts">
+  import AppAddButton from "#lib/components/app/button/app-add-button.svelte";
   import Badge from "#lib/components/ui/badge/badge.svelte";
-  import Button from "#lib/components/ui/button/button.svelte";
   import * as Dialog from "#lib/components/ui/dialog/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
-  import { Plus } from "@lucide/svelte";
 
   const academicYears = [
     {
@@ -22,8 +21,8 @@
       endDate: "30 Juni 2027",
       status: {
         label: "Aktif",
-        textColor: "text-purple-600",
-        bgColor: "bg-purple-100",
+        textColor: "text-green-600",
+        bgColor: "bg-green-100",
       },
     },
     {
@@ -44,10 +43,7 @@
     <h1 class="text-xl font-bold text-gray-800 ms-1.5">Tahun Ajaran</h1>
     <Dialog.Root>
       <Dialog.Trigger>
-        <Button class="px-5.5 py-5.5 bg-purple-100 text-purple-600 rounded-full border-0 hover:bg-purple-100 hover:cursor-pointer hover:shadow-lg transition-all">
-          <Plus />
-          <span>Tambah</span>
-        </Button>
+        <AppAddButton />
       </Dialog.Trigger>
       <Dialog.Content>
         <Dialog.Header>

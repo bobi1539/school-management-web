@@ -1,13 +1,30 @@
 <script lang="ts">
   import * as Sidebar from "#lib/components/ui/sidebar/index.ts";
-  import { goto } from "$app/navigation";
-  import { page } from "$app/state";
   import { BookOpen, Calendar, DoorOpen, LayoutDashboard, Receipt, Users, Wallet } from "@lucide/svelte";
+  import type { Component } from "svelte";
+  import AppSidebarMenuButton from "./app-sidebar-menu-button.svelte";
 
-  const sidebarContents = [
+  type SidebarGroup = {
+    label: string;
+    contents: SidebarMenuItem[];
+  };
+
+  type SidebarMenuItem = {
+    url: string;
+    icon: Component;
+    label: string;
+  };
+
+  const dashboardMenuItem: SidebarMenuItem = {
+    url: "/dashboard",
+    icon: LayoutDashboard,
+    label: "Dashboard",
+  };
+
+  const sidebarGroups: SidebarGroup[] = [
     {
-      groupLabel: "Master Data",
-      items: [
+      label: "Master Data",
+      contents: [
         {
           icon: Calendar,
           label: "Tahun Ajaran",
@@ -31,8 +48,8 @@
       ],
     },
     {
-      groupLabel: "Akademik",
-      items: [
+      label: "Akademik",
+      contents: [
         {
           icon: BookOpen,
           label: "Data Akademik",
@@ -41,8 +58,8 @@
       ],
     },
     {
-      groupLabel: "Keuangan",
-      items: [
+      label: "Keuangan",
+      contents: [
         {
           icon: Wallet,
           label: "Pembayaran",
@@ -53,7 +70,7 @@
   ];
 </script>
 
-<Sidebar.Root variant="sidebar" class="bg-white px-2 border border-gray-300">
+<Sidebar.Root class="bg-white px-2 border border-gray-300">
   <Sidebar.Header class="h-16 flex justify-center items-center bg-white">
     <h1 class="text-lg font-bold text-gray-800">RAA Thawalib</h1>
   </Sidebar.Header>
@@ -62,27 +79,19 @@
       <Sidebar.GroupContent>
         <Sidebar.Menu>
           <Sidebar.MenuItem>
-            <Sidebar.MenuButton onclick={() => goto("/dashboard")} isActive={page.url.pathname === "/dashboard"} class="px-5.5 py-5.5 transition-colors text-gray-600 rounded-full hover:bg-gray-100 hover:text-gray-600 hover:cursor-pointer hover:rounded-full data-[active=true]:bg-purple-100 data-[active=true]:text-purple-600 data-[active=true]:rounded-full">
-              <LayoutDashboard />
-              <span>Dashboard</span>
-            </Sidebar.MenuButton>
+            <AppSidebarMenuButton url={dashboardMenuItem.url} icon={dashboardMenuItem.icon} label={dashboardMenuItem.label} />
           </Sidebar.MenuItem>
         </Sidebar.Menu>
       </Sidebar.GroupContent>
     </Sidebar.Group>
-    {#each sidebarContents as content}
+    {#each sidebarGroups as group}
       <Sidebar.Group>
-        <Sidebar.GroupLabel>
-          {content.groupLabel}
-        </Sidebar.GroupLabel>
+        <Sidebar.GroupLabel>{group.label}</Sidebar.GroupLabel>
         <Sidebar.GroupContent>
           <Sidebar.Menu>
-            {#each content.items as item}
+            {#each group.contents as content}
               <Sidebar.MenuItem>
-                <Sidebar.MenuButton onclick={() => goto(item.url)} isActive={page.url.pathname === item.url} class="px-5.5 py-5.5 transition-colors text-gray-600 rounded-full hover:bg-gray-100 hover:text-gray-600 hover:cursor-pointer hover:rounded-full data-[active=true]:bg-purple-100 data-[active=true]:text-purple-600 data-[active=true]:rounded-full">
-                  <item.icon />
-                  <span>{item.label}</span>
-                </Sidebar.MenuButton>
+                <AppSidebarMenuButton url={content.url} icon={content.icon} label={content.label} />
               </Sidebar.MenuItem>
             {/each}
           </Sidebar.Menu>

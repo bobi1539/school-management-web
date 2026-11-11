@@ -1,0 +1,20 @@
+<script lang="ts">
+  import * as Sidebar from "#lib/components/ui/sidebar/index.ts";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
+  import type { Component, ComponentProps } from "svelte";
+
+  type AppSidebarMenuButtonProps = {
+    url: string;
+    icon: Component;
+    label: string;
+  } & ComponentProps<typeof Sidebar.MenuButton>;
+
+  let { ...props }: AppSidebarMenuButtonProps = $props();
+  const isActive = $derived(page.url.pathname === props.url);
+</script>
+
+<Sidebar.MenuButton onclick={() => goto(props.url)} {isActive} {...props} class="px-5.5 py-5.5 transition-colors text-gray-600 rounded-full hover:bg-gray-100 hover:text-gray-600 hover:cursor-pointer hover:rounded-full data-[active=true]:bg-purple-100 data-[active=true]:text-purple-600 data-[active=true]:rounded-full">
+  <props.icon />
+  <span>{props.label}</span>
+</Sidebar.MenuButton>

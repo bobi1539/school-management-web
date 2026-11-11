@@ -1,15 +1,40 @@
 <script lang="ts">
+  import Badge from "#lib/components/ui/badge/badge.svelte";
   import Button from "#lib/components/ui/button/button.svelte";
   import * as Dialog from "#lib/components/ui/dialog/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
   import { Plus } from "@lucide/svelte";
 
-  const invoices = [
+  const academicYears = [
     {
       name: "2027/2028",
       starDate: "01 Juli 2027",
       endDate: "30 Juni 2028",
-      paymentMethod: "Credit Card",
+      status: {
+        label: "Tidak Aktif",
+        textColor: "text-gray-600",
+        bgColor: "bg-gray-100",
+      },
+    },
+    {
+      name: "2026/2027",
+      starDate: "01 Juli 2026",
+      endDate: "30 Juni 2027",
+      status: {
+        label: "Aktif",
+        textColor: "text-purple-600",
+        bgColor: "bg-purple-100",
+      },
+    },
+    {
+      name: "2025/2026",
+      starDate: "01 Juli 2025",
+      endDate: "30 Juni 2026",
+      status: {
+        label: "Tidak Aktif",
+        textColor: "text-gray-600",
+        bgColor: "bg-gray-100",
+      },
     },
   ];
 </script>
@@ -43,13 +68,15 @@
       </Table.Row>
     </Table.Header>
     <Table.Body class="text-gray-600">
-      {#each invoices as invoice (invoice)}
+      {#each academicYears as academicYear (academicYear)}
         <Table.Row class="border-none hover:bg-gray-100">
-          <Table.Cell class="py-3.5 first:rounded-l-md">{invoice.name}</Table.Cell>
-          <Table.Cell class="py-3.5">{invoice.starDate}</Table.Cell>
-          <Table.Cell class="py-3.5">{invoice.endDate}</Table.Cell>
-          <Table.Cell class="py-3.5 text-end">{invoice.paymentMethod}</Table.Cell>
-          <Table.Cell class="py-3.5 last:rounded-r-md text-end">{invoice.paymentMethod}</Table.Cell>
+          <Table.Cell class="py-3.5 first:rounded-l-md">{academicYear.name}</Table.Cell>
+          <Table.Cell class="py-3.5">{academicYear.starDate}</Table.Cell>
+          <Table.Cell class="py-3.5">{academicYear.endDate}</Table.Cell>
+          <Table.Cell class="py-3.5">
+            <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor}">{academicYear.status.label}</Badge>
+          </Table.Cell>
+          <Table.Cell class="py-3.5 last:rounded-r-md text-end"></Table.Cell>
         </Table.Row>
       {/each}
     </Table.Body>

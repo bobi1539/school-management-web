@@ -1,26 +1,25 @@
 <script lang="ts">
   import Button from "#lib/components/ui/button/button.svelte";
   import Calendar from "#lib/components/ui/calendar/calendar.svelte";
-  import * as Field from "#lib/components/ui/field/index.ts";
   import * as Popover from "#lib/components/ui/popover/index.ts";
   import { type DateValue, DateFormatter, getLocalTimeZone } from "@internationalized/date";
   import { CalendarDays } from "@lucide/svelte";
+  import AppFieldLabel from "../field/app-field-label.svelte";
 
-  type Props = {
+  type AppDatePickerLabelProps = {
     label: string;
     name: string;
     value?: DateValue;
   };
 
-  let { value = $bindable(), ...props }: Props = $props();
+  let { value = $bindable(), ...props }: AppDatePickerLabelProps = $props();
 
   const df = new DateFormatter("id-ID", {
     dateStyle: "long",
   });
 </script>
 
-<Field.Field>
-  <Field.Label for={props.name}>{props.label}</Field.Label>
+<AppFieldLabel label={props.label}>
   <Popover.Root>
     <Popover.Trigger id={props.name}>
       {#snippet child({ props: triggerProps })}
@@ -34,4 +33,4 @@
       <Calendar type="single" bind:value />
     </Popover.Content>
   </Popover.Root>
-</Field.Field>
+</AppFieldLabel>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import AppAddButton from "#lib/components/app/button/app-add-button.svelte";
-  import AppInputDatePicker from "#lib/components/app/input/app-input-date-picker.svelte";
+  import AppDatePickerLabel from "#lib/components/app/date-picker/app-date-picker-label.svelte";
   import AppInputLabel from "#lib/components/app/input/app-input-label.svelte";
   import Badge from "#lib/components/ui/badge/badge.svelte";
   import Button from "#lib/components/ui/button/button.svelte";
@@ -50,16 +50,14 @@
       <Dialog.Trigger>
         <AppAddButton />
       </Dialog.Trigger>
-
-      <Dialog.Content class="p-8 -mt-32 rounded-none">
+      <Dialog.Content class="p-5 -mt-32 rounded-none">
         <Dialog.Header>
           <Dialog.Title class="text-lg font-semibold">Tambah Tahun Ajaran</Dialog.Title>
-          <Dialog.Description class="text-sm text-muted-foreground">Lengkapi informasi tahun ajaran yang ingin ditambahkan.</Dialog.Description>
         </Dialog.Header>
         <Field.Group>
-          <AppInputLabel label="Nama Tahun Ajaran" name="name" />
-          <AppInputDatePicker label="Tanggal Mulai" name="startDate" />
-          <AppInputDatePicker label="Tanggal Berakhir" name="endDate" />
+          <AppInputLabel label="Nama" name="name" />
+          <AppDatePickerLabel label="Tanggal Mulai" name="startDate" />
+          <AppDatePickerLabel label="Tanggal Berakhir" name="endDate" />
         </Field.Group>
         <Dialog.Footer>
           <div class="w-full flex justify-between">

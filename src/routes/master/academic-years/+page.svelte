@@ -3,40 +3,31 @@
   import Badge from "#lib/components/ui/badge/badge.svelte";
   import * as Card from "#lib/components/ui/card/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
+  import type { AcademicYearResponse } from "#lib/services/academic-year/dto.ts";
+  import { academicYearService } from "#lib/services/academic-year/service.ts";
+  import { dateTimeUtil } from "#lib/utils/date-time-util.ts";
   import { goto } from "$app/navigation";
 
-  const academicYears = [
-    {
-      name: "2027/2028",
-      starDate: "01 Juli 2027",
-      endDate: "30 Juni 2028",
-      status: {
-        label: "Tidak Aktif",
-        textColor: "text-gray-700",
-        bgColor: "bg-gray-100",
-      },
-    },
-    {
-      name: "2026/2027",
-      starDate: "01 Juli 2026",
-      endDate: "30 Juni 2027",
-      status: {
-        label: "Aktif",
-        textColor: "text-green-600",
-        bgColor: "bg-green-100",
-      },
-    },
-    {
-      name: "2025/2026",
-      starDate: "01 Juli 2025",
-      endDate: "30 Juni 2026",
-      status: {
-        label: "Tidak Aktif",
-        textColor: "text-gray-700",
-        bgColor: "bg-gray-100",
-      },
-    },
-  ];
+  let academicYears = $state<AcademicYearResponse[]>([]);
+  let loading = $state(false);
+  let error = $state<string | null>(null);
+
+  $effect(() => {
+    const fetchAcademicYears = async () => {
+      try {
+        loading = true;
+
+        const response = await academicYearService.getAll();
+        academicYears = response.data;
+      } catch (err) {
+        error = "Gagal mengambil data academic year";
+      } finally {
+        loading = false;
+      }
+    };
+
+    fetchAcademicYears();
+  });
 </script>
 
 <Card.Root class="w-full">
@@ -59,10 +50,10 @@
         {#each academicYears as academicYear (academicYear)}
           <Table.Row class="border-none hover:bg-gray-100">
             <Table.Cell class="px-5 py-3.5">{academicYear.name}</Table.Cell>
-            <Table.Cell class="px-5 py-3.5">{academicYear.starDate}</Table.Cell>
-            <Table.Cell class="px-5 py-3.5">{academicYear.endDate}</Table.Cell>
+            <Table.Cell class="px-5 py-3.5">{dateTimeUtil.formatDateLongStyle(academicYear.startDate)}</Table.Cell>
+            <Table.Cell class="px-5 py-3.5">{dateTimeUtil.formatDateLongStyle(academicYear.endDate)}</Table.Cell>
             <Table.Cell class="px-5 py-3.5">
-              <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor} rounded-none">{academicYear.status.label}</Badge>
+              <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor} rounded-none font-light">{academicYear.status.label}</Badge>
             </Table.Cell>
             <Table.Cell class="px-5 py-3.5">Aksi</Table.Cell>
           </Table.Row>

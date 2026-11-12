@@ -70,9 +70,9 @@
   ];
 </script>
 
-<Sidebar.Root class="bg-white px-2 border border-gray-300">
+<Sidebar.Root class="bg-white px-2 border border-gray-300 font-light">
   <Sidebar.Header class="h-16 flex justify-center items-center bg-white">
-    <h1 class="text-lg font-bold text-gray-800">RAA Thawalib</h1>
+    <h1 class="text-lg font-normal text-gray-700">RA Al-Qur'an Thawalib</h1>
   </Sidebar.Header>
   <Sidebar.Content class="bg-white">
     <Sidebar.Group>
@@ -86,7 +86,7 @@
     </Sidebar.Group>
     {#each sidebarGroups as group}
       <Sidebar.Group>
-        <Sidebar.GroupLabel class="text-gray-500">{group.label}</Sidebar.GroupLabel>
+        <Sidebar.GroupLabel class="text-gray-500 font-light">{group.label}</Sidebar.GroupLabel>
         <Sidebar.GroupContent>
           <Sidebar.Menu>
             {#each group.contents as content}

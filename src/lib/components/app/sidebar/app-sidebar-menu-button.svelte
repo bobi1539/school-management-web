@@ -14,7 +14,7 @@
   const isActive = $derived(page.url.pathname.startsWith(props.url));
 </script>
 
-<Sidebar.MenuButton onclick={() => goto(props.url)} {isActive} {...props} class="px-5.5 py-5.5 transition-colors text-gray-700 rounded-none hover:bg-gray-100 hover:text-gray-700 hover:cursor-pointer hover:rounded-none data-[active=true]:bg-app-100 data-[active=true]:text-app-600 data-[active=true]:rounded-none">
+<Sidebar.MenuButton onclick={() => goto(props.url)} {isActive} {...props} class="px-5.5 py-5.5 transition-colors text-gray-700 rounded-none hover:bg-gray-100 hover:text-gray-700 hover:cursor-pointer hover:rounded-none data-[active=true]:font-light data-[active=true]:bg-app-100 data-[active=true]:text-app-600 data-[active=true]:rounded-none">
   <props.icon />
   <span>{props.label}</span>
 </Sidebar.MenuButton>

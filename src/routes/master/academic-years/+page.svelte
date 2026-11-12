@@ -41,21 +41,21 @@
 
 <Card.Root class="w-full">
   <Card.Header class="flex justify-between items-center pb-0">
-    <Card.Title class="text-gray-700">Tahun Ajaran</Card.Title>
+    <Card.Title class="text-gray-700 font-normal">Tahun Ajaran</Card.Title>
     <AppAddButton onclick={() => goto("/master/academic-years/add")} />
   </Card.Header>
   <Card.Content>
     <Table.Root>
       <Table.Header>
-        <Table.Row class="border-b-gray-300 hover:bg-transparent ">
-          <Table.Head class="px-5 py-3.5">Nama</Table.Head>
-          <Table.Head class="px-5 py-3.5">Tanggal Mulai</Table.Head>
-          <Table.Head class="px-5 py-3.5">Tanggal Berakhir</Table.Head>
-          <Table.Head class="px-5 py-3.5">Status</Table.Head>
-          <Table.Head class="px-5 py-3.5">Aksi</Table.Head>
+        <Table.Row class="border-b-gray-300 hover:bg-transparent">
+          <Table.Head class="px-5 py-3.5 font-normal">Nama</Table.Head>
+          <Table.Head class="px-5 py-3.5 font-normal">Tanggal Mulai</Table.Head>
+          <Table.Head class="px-5 py-3.5 font-normal">Tanggal Berakhir</Table.Head>
+          <Table.Head class="px-5 py-3.5 font-normal">Status</Table.Head>
+          <Table.Head class="px-5 py-3.5 font-normal">Aksi</Table.Head>
         </Table.Row>
       </Table.Header>
-      <Table.Body class="text-gray-700">
+      <Table.Body class="text-gray-700 font-light">
         {#each academicYears as academicYear (academicYear)}
           <Table.Row class="border-none hover:bg-gray-100">
             <Table.Cell class="px-5 py-3.5">{academicYear.name}</Table.Cell>

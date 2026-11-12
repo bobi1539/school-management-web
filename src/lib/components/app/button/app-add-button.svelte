@@ -8,7 +8,7 @@
   let { ...props }: AppAddButtonProps = $props();
 </script>
 
-<Button {...props} class="px-5.5 h-11 bg-app-100 text-app-600 rounded-none border-0 hover:bg-app-100 hover:cursor-pointer hover:shadow-lg transition-all">
+<Button {...props} class="px-5.5 h-11 font-light bg-app-100 text-app-600 rounded-none border-0 hover:bg-app-100 hover:cursor-pointer hover:shadow-lg transition-all">
   <Plus />
   <span>Tambah</span>
 </Button>

@@ -10,7 +10,7 @@
 
 <Card.Root class="w-lg">
   <Card.Header>
-    <Card.Title class="text-gray-700 font-light">Tambah Tahun Ajaran</Card.Title>
+    <Card.Title class="text-gray-700 font-normal">Tambah Tahun Ajaran</Card.Title>
   </Card.Header>
   <Card.Content>
     <Field.Group>

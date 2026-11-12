@@ -1,5 +1,5 @@
 <script lang="ts">
-  import AppAddButton from "#lib/components/app/button/app-add-button.svelte";
+  import AppButtonAdd from "#lib/components/app/button/app-button-add.svelte";
   import Badge from "#lib/components/ui/badge/badge.svelte";
   import * as Card from "#lib/components/ui/card/index.ts";
   import * as Table from "#lib/components/ui/table/index.ts";
@@ -41,8 +41,8 @@
 
 <Card.Root class="w-full">
   <Card.Header class="flex justify-between items-center pb-0">
-    <Card.Title class="text-gray-700 font-normal">Tahun Ajaran</Card.Title>
-    <AppAddButton onclick={() => goto("/master/academic-years/add")} />
+    <Card.Title>Tahun Ajaran</Card.Title>
+    <AppButtonAdd onclick={() => goto("/master/academic-years/add")} />
   </Card.Header>
   <Card.Content>
     <Table.Root>

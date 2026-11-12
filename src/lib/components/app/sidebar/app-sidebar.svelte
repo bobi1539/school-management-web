@@ -71,8 +71,8 @@
 </script>
 
 <Sidebar.Root class="bg-white px-2 border border-gray-300 font-light">
-  <Sidebar.Header class="h-16 flex justify-center items-center bg-white">
-    <h1 class="text-lg font-normal text-gray-700">RA Al-Qur'an Thawalib</h1>
+  <Sidebar.Header class="h-20 flex justify-center items-center bg-white">
+    <h1 class="font-normal text-gray-700">RA Al-Qur'an Thawalib</h1>
   </Sidebar.Header>
   <Sidebar.Content class="bg-white">
     <Sidebar.Group>

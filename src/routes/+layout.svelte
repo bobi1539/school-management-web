@@ -18,7 +18,7 @@
     <div class="h-20 border-b border-gray-300 sticky top-0 z-50 bg-white flex items-center px-5">
       <Sidebar.Trigger class="p-5 rounded-none border border-gray-300 hover:cursor-pointer hover:rounded-none hover:bg-gray-100" />
     </div>
-    <div class="px-5 pt-5 pb-20">
+    <div class="px-5 pt-5 pb-20 flex justify-center">
       {@render children?.()}
     </div>
   </main>

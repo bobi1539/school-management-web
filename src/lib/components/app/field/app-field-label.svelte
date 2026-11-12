@@ -11,6 +11,6 @@
 </script>
 
 <Field.Field class="gap-1">
-  <Field.Label class="text-gray-600">{props.label}</Field.Label>
+  <Field.Label class="text-gray-700">{props.label}</Field.Label>
   {@render props.children()}
 </Field.Field>

@@ -86,7 +86,7 @@
     </Sidebar.Group>
     {#each sidebarGroups as group}
       <Sidebar.Group>
-        <Sidebar.GroupLabel>{group.label}</Sidebar.GroupLabel>
+        <Sidebar.GroupLabel class="text-gray-500">{group.label}</Sidebar.GroupLabel>
         <Sidebar.GroupContent>
           <Sidebar.Menu>
             {#each group.contents as content}

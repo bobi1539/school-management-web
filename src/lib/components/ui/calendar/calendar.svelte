@@ -79,7 +79,7 @@ get along, so we shut typescript up by casting `value` to `never`.
 			</CalendarNav>
 			{#each months as month, monthIndex (month)}
 				<CalendarMonth>
-					<CalendarHeader>
+					<CalendarHeader class="font-light">
 						<CalendarCaption
 							{captionLayout}
 							months={monthsProp}
@@ -96,7 +96,7 @@ get along, so we shut typescript up by casting `value` to `never`.
 						<CalendarGridHead>
 							<CalendarGridRow class="select-none">
 								{#each weekdays as weekday, i (i)}
-									<CalendarHeadCell>
+									<CalendarHeadCell class="font-light">
 										{weekday.slice(0, 2)}
 									</CalendarHeadCell>
 								{/each}
@@ -106,7 +106,7 @@ get along, so we shut typescript up by casting `value` to `never`.
 							{#each month.weeks as weekDates (weekDates)}
 								<CalendarGridRow class="mt-2 w-full">
 									{#each weekDates as date (date)}
-										<CalendarCell {date} month={month.value}>
+										<CalendarCell {date} month={month.value} class="font-light">
 											{#if day}
 												{@render day({
 													day: date,

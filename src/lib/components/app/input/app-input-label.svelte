@@ -13,5 +13,5 @@
 </script>
 
 <AppFieldLabel label={props.label}>
-  <Input id={props.name} name={props.name} bind:value autocomplete="off" class="py-5 text-gray-700 border-gray-300 rounded-none focus-visible:ring-app-600 focus-visible:ring-1 focus-visible:border-app-600 " />
+  <Input id={props.name} name={props.name} bind:value autocomplete="off" class="py-5 font-light text-gray-700 border-gray-300 rounded-none focus-visible:ring-app-600 focus-visible:ring-1 focus-visible:border-app-600 " />
 </AppFieldLabel>

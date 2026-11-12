@@ -40,7 +40,7 @@
 </script>
 
 <Card.Root class="w-full">
-  <Card.Header class="flex justify-between items-center">
+  <Card.Header class="flex justify-between items-center pb-0">
     <Card.Title class="text-gray-700">Tahun Ajaran</Card.Title>
     <AppAddButton onclick={() => goto("/master/academic-years/add")} />
   </Card.Header>

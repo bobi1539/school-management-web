@@ -10,7 +10,7 @@
 
 <Card.Root class="w-lg">
   <Card.Header>
-    <Card.Title class="text-gray-700">Tambah Tahun Ajaran</Card.Title>
+    <Card.Title class="text-gray-700 font-light">Tambah Tahun Ajaran</Card.Title>
   </Card.Header>
   <Card.Content>
     <Field.Group>
@@ -20,11 +20,11 @@
     </Field.Group>
   </Card.Content>
   <Card.Footer class="justify-between">
-    <Button onclick={() => goto("/master/academic-years")} class="px-5.5 h-11 bg-white text-gray-700 rounded-none border border-gray-300 hover:bg-gray-100 hover:cursor-pointer transition-all">
+    <Button onclick={() => goto("/master/academic-years")} class="px-5.5 h-11 font-light bg-white text-gray-700 rounded-none border border-gray-300 hover:bg-gray-100 hover:cursor-pointer transition-all">
       <ArrowLeft />
       <span>Kembali</span>
     </Button>
-    <Button class="px-5.5 h-11 bg-app-100 text-app-700 rounded-none border-0 hover:bg-app-100 hover:cursor-pointer hover:shadow-lg transition-all">
+    <Button class="px-5.5 h-11 font-light bg-app-100 text-app-700 rounded-none border-0 hover:bg-app-100 hover:cursor-pointer hover:shadow-lg transition-all">
       <Save />
       <span>Simpan</span>
     </Button>

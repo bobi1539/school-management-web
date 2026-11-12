@@ -10,7 +10,7 @@
   let props: AppFieldLabelProps = $props();
 </script>
 
-<Field.Field class="gap-1">
-  <Field.Label class="text-gray-700">{props.label}</Field.Label>
+<Field.Field class="gap-2">
+  <Field.Label class="text-gray-700 font-light">{props.label}</Field.Label>
   {@render props.children()}
 </Field.Field>

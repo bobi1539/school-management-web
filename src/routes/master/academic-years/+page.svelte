@@ -48,23 +48,23 @@
     <Table.Root>
       <Table.Header>
         <Table.Row class="border-b-gray-300 hover:bg-transparent ">
-          <Table.Head>Nama</Table.Head>
-          <Table.Head>Tanggal Mulai</Table.Head>
-          <Table.Head>Tanggal Berakhir</Table.Head>
-          <Table.Head>Status</Table.Head>
-          <Table.Head>Aksi</Table.Head>
+          <Table.Head class="px-5 py-3.5">Nama</Table.Head>
+          <Table.Head class="px-5 py-3.5">Tanggal Mulai</Table.Head>
+          <Table.Head class="px-5 py-3.5">Tanggal Berakhir</Table.Head>
+          <Table.Head class="px-5 py-3.5">Status</Table.Head>
+          <Table.Head class="px-5 py-3.5">Aksi</Table.Head>
         </Table.Row>
       </Table.Header>
       <Table.Body class="text-gray-700">
         {#each academicYears as academicYear (academicYear)}
           <Table.Row class="border-none hover:bg-gray-100">
-            <Table.Cell class="py-3.5">{academicYear.name}</Table.Cell>
-            <Table.Cell class="py-3.5">{academicYear.starDate}</Table.Cell>
-            <Table.Cell class="py-3.5">{academicYear.endDate}</Table.Cell>
-            <Table.Cell class="py-3.5">
+            <Table.Cell class="px-5 py-3.5">{academicYear.name}</Table.Cell>
+            <Table.Cell class="px-5 py-3.5">{academicYear.starDate}</Table.Cell>
+            <Table.Cell class="px-5 py-3.5">{academicYear.endDate}</Table.Cell>
+            <Table.Cell class="px-5 py-3.5">
               <Badge class="{academicYear.status.textColor} {academicYear.status.bgColor} rounded-none">{academicYear.status.label}</Badge>
             </Table.Cell>
-            <Table.Cell class="py-3.5"></Table.Cell>
+            <Table.Cell class="px-5 py-3.5">Aksi</Table.Cell>
           </Table.Row>
         {/each}
       </Table.Body>

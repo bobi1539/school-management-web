@@ -2,6 +2,7 @@
   import favicon from "#lib/assets/favicon.svg";
   import AppSidebar from "#lib/components/app/sidebar/app-sidebar.svelte";
   import * as Sidebar from "#lib/components/ui/sidebar/index.ts";
+  import { Toaster } from "#lib/components/ui/sonner/index.ts";
   import type { LayoutProps } from "./$types";
   import "./layout.css";
 
@@ -11,6 +12,8 @@
 <svelte:head>
   <link rel="icon" href={favicon} />
 </svelte:head>
+
+<Toaster />
 
 <Sidebar.Provider>
   <AppSidebar />

@@ -9,6 +9,7 @@
   import { academicYearService } from "#lib/services/academic-year/service.ts";
   import { goto } from "$app/navigation";
   import { type DateValue } from "@internationalized/date";
+  import { toast } from "svelte-sonner";
 
   import { superForm, superValidate } from "sveltekit-superforms";
   import { zod, zodClient } from "sveltekit-superforms/adapters";
@@ -58,8 +59,9 @@
     isLoadingSave = true;
 
     try {
-      await academicYearService.create($form);
-      // await goto("/master/academic-years");
+      const response = await academicYearService.create($form);
+      toast.success(response.message, { position: "top-right" });
+      await goto("/master/academic-years");
     } finally {
       isLoadingSave = false;
     }

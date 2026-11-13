@@ -16,11 +16,12 @@
 
   let startDate = $state<DateValue>();
   let endDate = $state<DateValue>();
+  let isLoadingSave = $state<boolean>(false);
 
   const schema = z.object({
-    name: z.string(),
-    startDate: z.string(),
-    endDate: z.string(),
+    name: z.string().trim().nonempty("Nama wajib diisi"),
+    startDate: z.string().nonempty("Tanggal mulai wajib diisi"),
+    endDate: z.string().nonempty("Tanggal berakhir wajib diisi"),
   });
 
   export const load = async () => {
@@ -34,36 +35,58 @@
     endDate: "",
   };
 
-  const { form, errors, enhance, submitting, message } = superForm(initialValues, {
-    validators: zodClient(schema),
-
-    onSubmit: async ({ cancel }) => {
-      cancel();
-
-      await academicYearService.create({
-        ...$form,
-        startDate: startDate?.toString() ?? "",
-        endDate: endDate?.toString() ?? "",
-      });
-    },
+  $effect(() => {
+    $form.startDate = startDate?.toString() ?? "";
   });
+
+  $effect(() => {
+    $form.endDate = endDate?.toString() ?? "";
+  });
+
+  const { form, errors, validateForm } = superForm(initialValues, {
+    validators: zodClient(schema),
+    validationMethod: "oninput",
+  });
+
+  const handleSubmit = async () => {
+    // Jalankan validasi seluruh field
+    const result = await validateForm({ update: true });
+
+    // Jika tidak valid, hentikan proses
+    if (!result.valid) return;
+
+    isLoadingSave = true;
+
+    try {
+      await academicYearService.create($form);
+      // await goto("/master/academic-years");
+    } finally {
+      isLoadingSave = false;
+    }
+  };
 </script>
 
-<form method="POST" use:enhance>
+<form
+  method="POST"
+  onsubmit={(event) => {
+    event.preventDefault();
+    handleSubmit();
+  }}
+>
   <Card.Root class="w-lg">
     <Card.Header>
       <Card.Title>Tambah Tahun Ajaran</Card.Title>
     </Card.Header>
     <Card.Content>
       <Field.Group>
-        <AppInputLabel label="Nama" name="name" bind:value={$form.name} />
-        <AppDatePickerLabel label="Tanggal Mulai" name="startDate" bind:value={startDate} />
-        <AppDatePickerLabel label="Tanggal Berakhir" name="endDate" bind:value={endDate} />
+        <AppInputLabel label="Nama" name="name" bind:value={$form.name} error={$errors.name?.[0]} />
+        <AppDatePickerLabel label="Tanggal Mulai" name="startDate" bind:value={startDate} error={$errors.startDate?.[0]} />
+        <AppDatePickerLabel label="Tanggal Berakhir" name="endDate" bind:value={endDate} error={$errors.endDate?.[0]} />
       </Field.Group>
     </Card.Content>
     <Card.Footer class="justify-between">
-      <AppButtonBack onclick={() => goto("/master/academic-years")} />
-      <AppButtonSave />
+      <AppButtonBack type="button" onclick={() => goto("/master/academic-years")} />
+      <AppButtonSave isLoading={isLoadingSave} />
     </Card.Footer>
   </Card.Root>
 </form>

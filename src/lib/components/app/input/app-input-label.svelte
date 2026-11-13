@@ -7,11 +7,12 @@
     label: string;
     name: string;
     value?: any;
+    error?: string;
   } & ComponentProps<typeof Input>;
 
   let { value = $bindable(), ...props }: AppInputLabelProps = $props();
 </script>
 
-<AppFieldLabel label={props.label}>
+<AppFieldLabel label={props.label} error={props.error}>
   <Input id={props.name} name={props.name} bind:value autocomplete="off" class="py-5 font-light text-gray-700 border-gray-300 rounded-none focus-visible:ring-app-600 focus-visible:ring-1 focus-visible:border-app-600 " />
 </AppFieldLabel>

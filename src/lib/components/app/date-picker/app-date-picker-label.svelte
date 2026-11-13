@@ -11,12 +11,13 @@
     label: string;
     name: string;
     value?: DateValue;
+    error?: string;
   };
 
   let { value = $bindable(), ...props }: AppDatePickerLabelProps = $props();
 </script>
 
-<AppFieldLabel label={props.label}>
+<AppFieldLabel label={props.label} error={props.error}>
   <Popover.Root>
     <Popover.Trigger id={props.name}>
       {#snippet child({ props: triggerProps })}

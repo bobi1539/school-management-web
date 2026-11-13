@@ -8,12 +8,15 @@
   import type { AcademicYearCreateRequest } from "#lib/services/academic-year/dto.ts";
   import { academicYearService } from "#lib/services/academic-year/service.ts";
   import { goto } from "$app/navigation";
+  import { type DateValue } from "@internationalized/date";
 
   import { superForm, superValidate } from "sveltekit-superforms";
   import { zod, zodClient } from "sveltekit-superforms/adapters";
   import { z } from "zod/v3";
 
-  // Define outside the load function so the adapter can be cached
+  let startDate = $state<DateValue>();
+  let endDate = $state<DateValue>();
+
   const schema = z.object({
     name: z.string(),
     startDate: z.string(),
@@ -22,8 +25,6 @@
 
   export const load = async () => {
     const form = await superValidate(zod(schema));
-
-    // Always return { form } in load functions
     return { form };
   };
 
@@ -36,8 +37,14 @@
   const { form, errors, enhance, submitting, message } = superForm(initialValues, {
     validators: zodClient(schema),
 
-    onSubmit: async () => {
-      await academicYearService.create($form);
+    onSubmit: async ({ cancel }) => {
+      cancel();
+
+      await academicYearService.create({
+        ...$form,
+        startDate: startDate?.toString() ?? "",
+        endDate: endDate?.toString() ?? "",
+      });
     },
   });
 </script>
@@ -49,9 +56,9 @@
     </Card.Header>
     <Card.Content>
       <Field.Group>
-        <AppInputLabel label="Nama" name="name" />
-        <AppDatePickerLabel label="Tanggal Mulai" name="startDate" />
-        <AppDatePickerLabel label="Tanggal Berakhir" name="endDate" />
+        <AppInputLabel label="Nama" name="name" bind:value={$form.name} />
+        <AppDatePickerLabel label="Tanggal Mulai" name="startDate" bind:value={startDate} />
+        <AppDatePickerLabel label="Tanggal Berakhir" name="endDate" bind:value={endDate} />
       </Field.Group>
     </Card.Content>
     <Card.Footer class="justify-between">

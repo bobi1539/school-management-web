@@ -60,8 +60,10 @@
 
     try {
       const response = await academicYearService.create($form);
-      toast.success(response.message, { position: "top-right" });
+      toast.success(response.message, { position: "top-right", class: "font-light" });
       await goto("/master/academic-years");
+    } catch (err: any) {
+      toast.error(err.message);
     } finally {
       isLoadingSave = false;
     }

@@ -15,10 +15,12 @@
 	class="toaster group"
 	style="--normal-bg: var(--color-popover); --normal-text: var(--color-popover-foreground); --normal-border: var(--color-border);"
 	toastOptions={{
+		unstyled:true,
 		classes: {
-			toast: "cn-toast",
+			toast: "cn-toast w-[356px] max-w-[calc(100vw-32px)] p-4 flex items-center gap-2 rounded-none border border-gray-300 shadow-lg font-light text-sm text-gray-700 bg-white",
 		},
 	}}
+	position="top-right"
 	{...restProps}
 >
 	{#snippet loadingIcon()}

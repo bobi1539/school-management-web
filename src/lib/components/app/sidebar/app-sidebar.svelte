@@ -1,5 +1,6 @@
 <script lang="ts">
   import * as Sidebar from "#lib/components/ui/sidebar/index.ts";
+  import { FE_ENDPOINT_ACADEMIC_YEAR } from "#lib/constants/fe-endpoint.ts";
   import { BookOpen, Calendar, DoorOpen, LayoutDashboard, Receipt, Users, Wallet } from "@lucide/svelte";
   import type { Component } from "svelte";
   import AppSidebarMenuButton from "./app-sidebar-menu-button.svelte";
@@ -28,7 +29,7 @@
         {
           icon: Calendar,
           label: "Tahun Ajaran",
-          url: "/master/academic-years",
+          url: FE_ENDPOINT_ACADEMIC_YEAR,
         },
         {
           icon: DoorOpen,

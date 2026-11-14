@@ -7,6 +7,7 @@
   import { academicYearService } from "#lib/services/academic-year/service.ts";
   import { dateTimeUtil } from "#lib/utils/date-time-util.ts";
   import { goto } from "$app/navigation";
+  import { toast } from "svelte-sonner";
 
   let academicYears = $state<AcademicYearResponse[]>([]);
   let loading = $state(false);
@@ -19,8 +20,9 @@
 
         const response = await academicYearService.getAll();
         academicYears = response.data;
-      } catch (err) {
+      } catch (err: any) {
         error = "Gagal mengambil data academic year";
+        toast.error(err.message);
       } finally {
         loading = false;
       }

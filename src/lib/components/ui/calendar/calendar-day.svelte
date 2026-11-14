@@ -16,7 +16,7 @@
 		"[&:last-child[data-selected=true]_button]:rounded-r-(--cell-radius)",
 		"not-data-selected:hover:bg-app-100 not-data-selected:hover:text-accent-foreground",
 		"[&[data-today]:not([data-selected])]:bg-app-100 [&[data-today]:not([data-selected])]:text-accent-foreground [&[data-today][data-disabled]]:text-muted-foreground",
-		"data-selected:bg-app-600 data-selected:text-white data-selected:hover:text-white",
+		"data-selected:bg-app-700 data-selected:text-white data-selected:hover:text-white",
 		// Outside months
 		"[&[data-outside-month]:not([data-selected])]:text-muted-foreground [&[data-outside-month]:not([data-selected])]:hover:text-accent-foreground",
 		// Disabled

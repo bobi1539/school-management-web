@@ -21,7 +21,7 @@
   <Popover.Root>
     <Popover.Trigger id={props.name}>
       {#snippet child({ props: triggerProps })}
-        <Button {...triggerProps} class="py-5 justify-between font-light bg-white text-gray-700 border rounded-none border-gray-300 hover:cursor-pointer hover:bg-white data-[state=open]:border-app-600 data-[state=open]:ring-1 data-[state=open]:ring-app-600">
+        <Button {...triggerProps} class="py-5 justify-between font-light bg-white text-gray-700 border rounded-none border-gray-300 hover:cursor-pointer hover:bg-white data-[state=open]:border-app-700 data-[state=open]:ring-1 data-[state=open]:ring-app-700">
           <span>{value ? dateTimeUtil.formatDateLongStyle(value) : ""}</span>
           <CalendarDays />
         </Button>
